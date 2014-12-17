@@ -22,7 +22,6 @@ public class Main extends Application {
         sceneSwitcher.loadScene("a");
         primaryStage.show();
 
-        XmlCreator.startCreator();
     }
 
 

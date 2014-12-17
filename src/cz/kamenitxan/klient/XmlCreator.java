@@ -15,11 +15,11 @@ import javax.xml.transform.stream.StreamResult;
 
 public class XmlCreator {
 
-	public static void startCreator() {
-		sendXML(createXML());
+	public static void startCreator(Request request) {
+		sendXML(createXML(request));
 	}
 
-	private static Document createXML() {
+	private static Document createXML(Request r) {
 		final DocumentBuilderFactory documentFactory = DocumentBuilderFactory.newInstance();
 		try {
 			final DocumentBuilder documentBuilder = documentFactory.newDocumentBuilder();
@@ -30,20 +30,27 @@ public class XmlCreator {
 			document.appendChild(root);
 
 			Element name = document.createElement("name");
+			name.setTextContent(r.name);
 			root.appendChild(name);
 
 			Element department = document.createElement("department");
+			department.setTextContent(r.department);
 			root.appendChild(department);
 
 			Element place = document.createElement("place");
+			place.setTextContent(r.place);
 			root.appendChild(place);
 
 			Element phone = document.createElement("phone");
+			phone.setTextContent(r.phone);
 			root.appendChild(phone);
 
-			// TODO: multiple choice
+			Element type = document.createElement("type");
+			type.setTextContent(r.type);
+			root.appendChild(type);
 
 			Element desc = document.createElement("desc");
+			desc.setTextContent(r.desc);
 			root.appendChild(desc);
 
 			return document;

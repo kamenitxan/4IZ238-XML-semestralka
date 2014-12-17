@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.Pane?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="419.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="419.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cz.kamenitxan.klient.gui.scenes.Controller">
    <children>
       <Label layoutX="14.0" layoutY="14.0" text="Vyžadujete-li asistenci IT pracovníka, vyplňte následující formulář" />
       <Label layoutX="14.0" layoutY="40.0" text="Jméno:" />
@@ -16,23 +16,24 @@
       <Label layoutX="19.0" layoutY="192.0" text="Závada:" />
       <RadioButton layoutX="78.0" layoutY="191.0" mnemonicParsing="false" text="Nefunguje">
          <toggleGroup>
-            <ToggleGroup fx:id="a" />
+            <ToggleGroup fx:id="type" />
          </toggleGroup>
       </RadioButton>
-      <RadioButton layoutX="79.0" layoutY="218.0" mnemonicParsing="false" text="Vypíná se" toggleGroup="$a" />
-      <RadioButton layoutX="250.0" layoutY="218.0" mnemonicParsing="false" text="Nefunguje tiskárna" toggleGroup="$a" />
-      <RadioButton layoutX="250.0" layoutY="191.0" mnemonicParsing="false" text="Nefunguje myš" toggleGroup="$a" />
-      <RadioButton layoutX="79.0" layoutY="243.0" mnemonicParsing="false" text="Chybí modré E" toggleGroup="$a" />
-      <RadioButton layoutX="250.0" layoutY="243.0" mnemonicParsing="false" text="Nefunguje email" toggleGroup="$a" />
-      <RadioButton layoutX="401.0" layoutY="191.0" mnemonicParsing="false" text="Nafunguje klávesnice" toggleGroup="$a" />
-      <RadioButton layoutX="401.0" layoutY="218.0" mnemonicParsing="false" text="Neumím něco v Wordu" toggleGroup="$a" />
-      <RadioButton layoutX="401.0" layoutY="243.0" mnemonicParsing="false" text="Jiné, popište" toggleGroup="$a" />
+      <RadioButton layoutX="79.0" layoutY="218.0" mnemonicParsing="false" text="Vypíná se" toggleGroup="$type" />
+      <RadioButton layoutX="250.0" layoutY="218.0" mnemonicParsing="false" text="Nefunguje tiskárna" toggleGroup="$type" />
+      <RadioButton layoutX="250.0" layoutY="191.0" mnemonicParsing="false" text="Nefunguje myš" toggleGroup="$type" />
+      <RadioButton layoutX="79.0" layoutY="243.0" mnemonicParsing="false" selected="true" text="Chybí modré E" toggleGroup="$type" />
+      <RadioButton layoutX="250.0" layoutY="243.0" mnemonicParsing="false" text="Nefunguje email" toggleGroup="$type" />
+      <RadioButton layoutX="401.0" layoutY="191.0" mnemonicParsing="false" text="Nafunguje klávesnice" toggleGroup="$type" />
+      <RadioButton layoutX="401.0" layoutY="218.0" mnemonicParsing="false" selected="true" text="Neumím něco v Wordu" toggleGroup="$type" />
+      <RadioButton layoutX="401.0" layoutY="243.0" mnemonicParsing="false" text="Jiné, popište" toggleGroup="$type" />
       <Label layoutX="17.0" layoutY="274.0" text="Popis:" />
       <TextArea fx:id="desc" layoutX="58.0" layoutY="274.0" prefHeight="95.0" prefWidth="517.0" />
-      <Button layoutX="221.0" layoutY="381.0" mnemonicParsing="false" text="Odeslat požadavek" />
+      <Button layoutX="221.0" layoutY="381.0" mnemonicParsing="false" onAction="#handleSendButton" text="Odeslat požadavek" />
       <TextField fx:id="name" layoutX="78.0" layoutY="35.0" />
       <TextField fx:id="department" layoutX="78.0" layoutY="65.0" />
       <TextField fx:id="place" layoutX="137.0" layoutY="96.0" />
       <TextField fx:id="phone" layoutX="137.0" layoutY="126.0" />
+      <CheckBox fx:id="restart" layoutX="228.0" layoutY="166.0" mnemonicParsing="false" />
    </children>
 </Pane>
