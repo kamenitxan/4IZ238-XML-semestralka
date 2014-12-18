@@ -3,7 +3,6 @@ package cz.kamenitxan.klient;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import oshi.SystemInfo;
-import oshi.software.os.OperatingSystem;
 import oshi.util.FormatUtil;
 
 
@@ -16,6 +15,10 @@ import javax.xml.transform.TransformerException;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
+import java.io.DataOutputStream;
+import java.io.IOException;
+import java.net.Socket;
+import java.net.UnknownHostException;
 
 public class XmlCreator {
 
@@ -88,16 +91,26 @@ public class XmlCreator {
 	private static void sendXML(Document document) {
 		final TransformerFactory transformerFactory = TransformerFactory.newInstance();
 		try {
+			Socket socket = new Socket("localhost", 9999);
+			DataOutputStream os = new DataOutputStream(socket.getOutputStream());
+
 			Transformer transformer = transformerFactory.newTransformer();
 			DOMSource domSource = new DOMSource(document);
 
-
-			StreamResult result = new StreamResult(System.out);
-
+			StreamResult result = new StreamResult(os);
 			transformer.transform(domSource, result);
+
+			os.flush();
+			socket.close();
+			System.out.println("Požadavek odeslán");
+
 		} catch (TransformerConfigurationException e) {
 			e.printStackTrace();
 		} catch (TransformerException e) {
+			e.printStackTrace();
+		} catch (UnknownHostException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
 			e.printStackTrace();
 		}
 
