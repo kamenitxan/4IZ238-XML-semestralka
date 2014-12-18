@@ -2,6 +2,10 @@ package cz.kamenitxan.klient;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
+import oshi.SystemInfo;
+import oshi.software.os.OperatingSystem;
+import oshi.util.FormatUtil;
+
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -52,6 +56,27 @@ public class XmlCreator {
 			Element desc = document.createElement("desc");
 			desc.setTextContent(r.desc);
 			root.appendChild(desc);
+
+			SystemInfo si = new SystemInfo();
+			Element os = document.createElement("os");
+			os.setTextContent(si.getOperatingSystem().getFamily());
+			root.appendChild(os);
+
+			Element osVersion = document.createElement("osVersion");
+			osVersion.setTextContent(si.getOperatingSystem().getVersion().toString());
+			root.appendChild(osVersion);
+
+			Element totalRam = document.createElement("totalRam");
+			totalRam.setTextContent(String.valueOf(FormatUtil.formatBytes(si.getHardware().getMemory().getTotal())));
+			root.appendChild(totalRam);
+
+			Element freeRam = document.createElement("freeRam");
+			freeRam.setTextContent(String.valueOf(FormatUtil.formatBytes(si.getHardware().getMemory().getAvailable())));
+			root.appendChild(freeRam);
+
+			Element cpu = document.createElement("cpu");
+			cpu.setTextContent(si.getHardware().getProcessors()[1].toString());
+			root.appendChild(cpu);
 
 			return document;
 		} catch (ParserConfigurationException e) {
