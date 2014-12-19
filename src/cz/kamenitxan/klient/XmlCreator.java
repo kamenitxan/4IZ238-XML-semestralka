@@ -19,8 +19,11 @@ import java.io.DataOutputStream;
 import java.io.IOException;
 import java.net.Socket;
 import java.net.UnknownHostException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 
 public class XmlCreator {
+	private static final String APPVERSION = "1.0";
 
 	public static void startCreator(Request request) {
 		sendXML(createXML(request));
@@ -36,50 +39,94 @@ public class XmlCreator {
 			Element root = document.createElement("pozadavek");
 			document.appendChild(root);
 
+			Element person = document.createElement("person");
+			root.appendChild(person);
+
 			Element name = document.createElement("name");
 			name.setTextContent(r.name);
-			root.appendChild(name);
+			person.appendChild(name);
 
 			Element department = document.createElement("department");
 			department.setTextContent(r.department);
-			root.appendChild(department);
+			person.appendChild(department);
 
 			Element place = document.createElement("place");
 			place.setTextContent(r.place);
-			root.appendChild(place);
+			person.appendChild(place);
 
 			Element phone = document.createElement("phone");
 			phone.setTextContent(r.phone);
-			root.appendChild(phone);
+			person.appendChild(phone);
+
+			Element problem = document.createElement("problem");
+			root.appendChild(problem);
+
+			Element createTime = document.createElement("createTime");
+			createTime.setTextContent(
+					new SimpleDateFormat("yyyyMMdd_HHmmss").format(Calendar.getInstance().getTime())
+			);
+			problem.appendChild(createTime);
 
 			Element type = document.createElement("type");
 			type.setTextContent(r.type);
-			root.appendChild(type);
+			problem.appendChild(type);
+
+			Element restart = document.createElement("restart");
+			restart.setTextContent(r.isRestart());
+			problem.appendChild(restart);
+
+			Element priority = document.createElement("priority");
+			priority.setTextContent("0");
+			problem.appendChild(priority);
 
 			Element desc = document.createElement("desc");
 			desc.setTextContent(r.desc);
-			root.appendChild(desc);
+			problem.appendChild(desc);
 
+			Element pc = document.createElement("pc");
+			root.appendChild(pc);
 			SystemInfo si = new SystemInfo();
 			Element os = document.createElement("os");
 			os.setTextContent(si.getOperatingSystem().getFamily());
-			root.appendChild(os);
+			pc.appendChild(os);
 
 			Element osVersion = document.createElement("osVersion");
 			osVersion.setTextContent(si.getOperatingSystem().getVersion().toString());
-			root.appendChild(osVersion);
+			pc.appendChild(osVersion);
 
 			Element totalRam = document.createElement("totalRam");
 			totalRam.setTextContent(String.valueOf(FormatUtil.formatBytes(si.getHardware().getMemory().getTotal())));
-			root.appendChild(totalRam);
+			pc.appendChild(totalRam);
 
 			Element freeRam = document.createElement("freeRam");
 			freeRam.setTextContent(String.valueOf(FormatUtil.formatBytes(si.getHardware().getMemory().getAvailable())));
-			root.appendChild(freeRam);
+			pc.appendChild(freeRam);
 
 			Element cpu = document.createElement("cpu");
 			cpu.setTextContent(si.getHardware().getProcessors()[1].toString());
-			root.appendChild(cpu);
+			pc.appendChild(cpu);
+
+			Element appv = document.createElement("appv");
+			appv.setTextContent(APPVERSION);
+			pc.appendChild(appv);
+
+			Element action = document.createElement("action");
+			root.appendChild(action);
+
+			Element actionTime = document.createElement("actionTime");
+			action.appendChild(actionTime);
+
+			Element itWorker = document.createElement("itWorker");
+			action.appendChild(itWorker);
+
+			Element resolved = document.createElement("resolved");
+			action.appendChild(resolved);
+
+			Element problemSource = document.createElement("problemSource");
+			action.appendChild(problemSource);
+
+			Element fixes = document.createElement("fixes");
+			action.appendChild(fixes);
 
 			return document;
 		} catch (ParserConfigurationException e) {

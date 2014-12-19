@@ -1,14 +1,31 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <pozadavek>
-	<name>Karel</name>
-	<department>Účto</department>
-	<place>u okna vlevo</place>
-	<phone>789526154</phone>
-	<type>Nafunguje klávesnice</type>
-	<desc>pomoc</desc>
-	<os>Mac OS X</os>
-	<osVersion>10.9.5 (Mavericks) build 13F34</osVersion>
-	<totalRam>16 GB</totalRam>
-	<freeRam>830,2 MB</freeRam>
-	<cpu>Intel(R) Core(TM) i5-3570K CPU @ 3.40GHz</cpu>
+	<person>
+		<name/>
+		<department/>
+		<place/>
+		<phone/>
+	</person>
+	<problem>
+		<createTime>20141219_153643</createTime>
+		<type>Neumím něco v Wordu</type>
+		<restart>False</restart>
+		<priority>0</priority>
+		<desc/>
+	</problem>
+	<pc>
+		<os>Mac OS X</os>
+		<osVersion>10.9.5 (Mavericks) build 13F34</osVersion>
+		<totalRam>16 GB</totalRam>
+		<freeRam>2,8 GB</freeRam>
+		<cpu>Intel(R) Core(TM) i5-3570K CPU @ 3.40GHz</cpu>
+		<appv>1.0</appv>
+	</pc>
+	<action>
+		<actionTime/>
+		<itWorker/>
+		<resolved/>
+		<problemSource/>
+		<fixes/>
+	</action>
 </pozadavek>

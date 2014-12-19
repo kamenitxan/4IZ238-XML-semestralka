@@ -36,4 +36,12 @@ public class Request {
 	public void setType(String type) {
 		this.type = type;
 	}
+
+	public String isRestart() {
+		if (restart) {
+			return "True";
+		} else {
+			return "False";
+		}
+	}
 }
