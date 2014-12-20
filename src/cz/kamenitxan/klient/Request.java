@@ -1,13 +1,30 @@
 package cz.kamenitxan.klient;
 
-public class Request {
+import java.io.Serializable;
+
+public class Request implements Serializable{
 	String name = "";
 	String department = "";
 	String place = "";
 	String phone = "";
+
+	String createTime = "";
 	boolean restart = false;
 	String type = "";
+	String priority = "";
 	String desc = "";
+
+	String os = "";
+	String osVersion = "";
+	String totalRam = "";
+	String freeRam = "";
+	String cpu = "";
+	String appv = "";
+
+	String actionTime = "";
+	String itWorker = "";
+	String resolved = "";
+	String fixes = "";
 
 	public void setName(String name) {
 		this.name = name;

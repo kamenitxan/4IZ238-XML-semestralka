@@ -3,9 +3,11 @@ package cz.kamenitxan.server;
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.ArrayList;
 
 public class ServerReciever {
 	ServerSocket server = null;
+	private static ArrayList<String> requests = new ArrayList<>();
 
 	public void listenSocket(){
 		ServerSocket serverSocket = null;
@@ -15,12 +17,11 @@ public class ServerReciever {
 
 			while(true){
 				Socket socket = serverSocket.accept();
-				XmlProcesor client = new XmlProcesor(socket);
+				XmlProcesor client = new XmlProcesor(socket, Main.isCleanStart());
 				new Thread(client).start();
 			}
 		} catch (IOException e) {
 			System.err.println("Could not listen on port: " + 9999 + ", " + e.getMessage());
-			System.exit(1);
 		}
 		try {
 			serverSocket.close();
@@ -28,5 +29,13 @@ public class ServerReciever {
 			System.err.println("Could not close server socket." + e.getMessage());
 		}
 
+	}
+
+	public static ArrayList<String> getRequests() {
+		return requests;
+	}
+
+	public static void addRequest(String request) {
+		requests.add(request);
 	}
 }

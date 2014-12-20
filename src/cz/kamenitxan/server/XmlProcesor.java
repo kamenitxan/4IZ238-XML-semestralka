@@ -1,14 +1,18 @@
 package cz.kamenitxan.server;
 
+import cz.kamenitxan.klient.Request;
 
 import java.io.DataInputStream;
 import java.net.Socket;
+import java.util.HashMap;
+import java.util.Map;
 
 public class XmlProcesor implements Runnable {
 	Socket clientSocket = null;
 	static int i = 0;
+	private Map<Integer, Request> requests = new HashMap<>();
 
-	public XmlProcesor(Socket clientSocket) {
+	public XmlProcesor(Socket clientSocket, boolean cleanStart) {
 		this.clientSocket = clientSocket;
 	}
 
@@ -27,6 +31,7 @@ public class XmlProcesor implements Runnable {
 	private void processXml(String xml) {
 		i++;
 		System.out.println(i + xml);
+		ServerReciever.addRequest(xml);
 	}
 
 	static String convertStreamToString(java.io.InputStream is) {

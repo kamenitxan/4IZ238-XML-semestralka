@@ -1,0 +1,52 @@
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<xs:element name="pozadavek">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="person">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element type="xs:string" name="name"/>
+							<xs:element type="xs:string" name="department"/>
+							<xs:element type="xs:string" name="place"/>
+							<xs:element type="xs:int" name="phone"/>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="problem">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element type="xs:string" name="createTime"/>
+							<xs:element type="xs:string" name="type"/>
+							<xs:element type="xs:boolean" name="restart"/>
+							<xs:element type="xs:int" name="priority"/>
+							<xs:element type="xs:string" name="desc"/>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="pc">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element type="xs:string" name="os"/>
+							<xs:element type="xs:string" name="osVersion"/>
+							<xs:element type="xs:string" name="totalRam"/>
+							<xs:element type="xs:string" name="freeRam"/>
+							<xs:element type="xs:string" name="cpu"/>
+							<xs:element type="xs:float" name="appv"/>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="action">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element type="xs:string" name="actionTime"/>
+							<xs:element type="xs:string" name="itWorker"/>
+							<xs:element type="xs:boolean" name="resolved"/>
+							<xs:element type="xs:string" name="problemSource"/>
+							<xs:element type="xs:string" name="fixes"/>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>
