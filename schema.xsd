@@ -2,7 +2,7 @@
 	<xs:element name="pozadavek">
 		<xs:complexType>
 			<xs:sequence>
-				<xs:element name="person">
+				<xs:element name="person" minOccurs="1">
 					<xs:complexType>
 						<xs:sequence>
 							<xs:element type="xs:string" name="name"/>
@@ -12,35 +12,35 @@
 						</xs:sequence>
 					</xs:complexType>
 				</xs:element>
-				<xs:element name="problem">
+				<xs:element name="problem" minOccurs="1">
 					<xs:complexType>
 						<xs:sequence>
-							<xs:element type="xs:string" name="createTime"/>
-							<xs:element type="xs:string" name="type"/>
-							<xs:element type="xs:boolean" name="restart"/>
-							<xs:element type="xs:int" name="priority"/>
+							<xs:element type="xs:string" name="createTime" minOccurs="1"/>
+							<xs:element type="xs:string" name="type" minOccurs="1"/>
+							<xs:element type="xs:boolean" name="restart" minOccurs="1"/>
+							<xs:element type="xs:int" name="priority" minOccurs="1"/>
 							<xs:element type="xs:string" name="desc"/>
 						</xs:sequence>
 					</xs:complexType>
 				</xs:element>
-				<xs:element name="pc">
+				<xs:element name="pc" minOccurs="1">
 					<xs:complexType>
 						<xs:sequence>
-							<xs:element type="xs:string" name="os"/>
-							<xs:element type="xs:string" name="osVersion"/>
-							<xs:element type="xs:string" name="totalRam"/>
-							<xs:element type="xs:string" name="freeRam"/>
-							<xs:element type="xs:string" name="cpu"/>
-							<xs:element type="xs:float" name="appv"/>
+							<xs:element type="xs:string" name="os" minOccurs="1"/>
+							<xs:element type="xs:string" name="osVersion" minOccurs="1"/>
+							<xs:element type="xs:string" name="totalRam" minOccurs="1"/>
+							<xs:element type="xs:string" name="freeRam" minOccurs="1"/>
+							<xs:element type="xs:string" name="cpu" minOccurs="1"/>
+							<xs:element type="xs:float" name="appv" minOccurs="1"/>
 						</xs:sequence>
 					</xs:complexType>
 				</xs:element>
-				<xs:element name="action">
+				<xs:element name="action" minOccurs="1">
 					<xs:complexType>
 						<xs:sequence>
 							<xs:element type="xs:string" name="actionTime"/>
 							<xs:element type="xs:string" name="itWorker"/>
-							<xs:element type="xs:boolean" name="resolved"/>
+							<xs:element type="xs:boolean" name="resolved" minOccurs="1"/>
 							<xs:element type="xs:string" name="problemSource"/>
 							<xs:element type="xs:string" name="fixes"/>
 						</xs:sequence>

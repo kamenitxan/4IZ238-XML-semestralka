@@ -37,5 +37,6 @@ public class ServerReciever {
 
 	public static void addRequest(String request) {
 		requests.add(request);
+		Generator.generate(requests);
 	}
 }

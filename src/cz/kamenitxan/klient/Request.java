@@ -56,9 +56,9 @@ public class Request implements Serializable{
 
 	public String isRestart() {
 		if (restart) {
-			return "True";
+			return "true";
 		} else {
-			return "False";
+			return "false";
 		}
 	}
 }

@@ -120,6 +120,7 @@ public class XmlCreator {
 			action.appendChild(itWorker);
 
 			Element resolved = document.createElement("resolved");
+			resolved.setTextContent("false");
 			action.appendChild(resolved);
 
 			Element problemSource = document.createElement("problemSource");
