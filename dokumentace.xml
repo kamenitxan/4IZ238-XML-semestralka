@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="http://docbook.org/xml/5.0/rng/docbook.rng" schematypens="http://relaxng.org/ns/structure/1.0"?>
+<?xml-model href="http://docbook.org/xml/5.0/rng/docbook.rng" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<book xmlns="http://docbook.org/ns/docbook"
+    xmlns:xlink="http://www.w3.org/1999/xlink" version="5.0">
+    <info>
+        <title>Aplikace pro požadavky na IT podporu</title>
+        <author>
+            <personname>Tomáš Pavel (xpavt36)</personname>
+            <address>
+                <city>Praha</city>
+                <country>CZ</country>
+            </address>
+            <email>xpavt36@vse.cz</email>
+        </author>
+    </info>
+    <part>
+        <title>Návod k použití</title>
+        <chapter>
+            <title>Popis aplikace</title>
+            <para>Uživatel má k dispozici GUI aplikaci. Pokud má problém s počítačem, může jí využít k
+            zavolání IT pracovníka. Stačí jen vyplnit tabulku a kliknout na tlačítko Odeslat požadavek.
+            Požadavek je odeslán na server, kde je zpracován.</para>
+        </chapter>
+        <chapter>
+            <title>Technické detaily</title>
+            <para>
+                Klientská aplikace odesílá na server XML dokument pomocí socketů.
+                Serverová aplikace po přijetí požadavku přijaté XML zvaliduje podle xsd schématu 
+                a v případě vadidity požadavek uloží. Nevalidní požadavka při správně vyplněném formuláři
+                teoreticky nemůže nastat.
+                Požadavky jsou dále zpracovány xsl transformací, která je převede do html. Výsledný soubor 
+                je uložený jako requests.html
+                Je to udělané tak, že po každém přijatém požadavku se vygeneruje html soubor, aby bylo dobře vidět,
+                že to funguje.             
+            </para>
+            <sect1>
+                <title>Seznam tříd</title>
+                <itemizedlist>
+                    <listitem><para>ServerReciever - přijímá XML</para></listitem>
+                    <listitem><para>XmlProcesor - validuje XML</para></listitem>
+                    <listitem><para>Generator - vytváří HTML</para></listitem>
+                </itemizedlist>
+            </sect1>
+          
+        </chapter>
+    </part>
+</book>
