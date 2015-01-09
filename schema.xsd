@@ -1,4 +1,5 @@
-<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema"
+		xmlns:sch="http://purl.oclc.org/dsdl/schematron">
 	<xs:element name="pozadavek">
 		<xs:complexType>
 			<xs:sequence>
@@ -8,7 +9,13 @@
 							<xs:element type="xs:string" name="name"/>
 							<xs:element type="xs:string" name="department"/>
 							<xs:element type="xs:string" name="place"/>
-							<xs:element type="xs:int" name="phone"/>
+							<xs:element name="phone">
+								<xs:simpleType>
+									<xs:restriction base="xs:int">
+										<xs:totalDigits value="9"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
 						</xs:sequence>
 					</xs:complexType>
 				</xs:element>
@@ -31,7 +38,19 @@
 							<xs:element type="xs:string" name="totalRam" minOccurs="1"/>
 							<xs:element type="xs:string" name="freeRam" minOccurs="1"/>
 							<xs:element type="xs:string" name="cpu" minOccurs="1"/>
-							<xs:element type="xs:float" name="appv" minOccurs="1"/>
+							<xs:element type="xs:float" name="appv" minOccurs="1">
+								<xs:annotation>
+									<xs:appinfo>
+										<sch:pattern>
+											<sch:title>Verze aplikace</sch:title>
+											<sch:rule context="appv">
+												<sch:report test="appv &lt; 1">Aplikace je zastaralá.
+													Současná verze je <sch:value-of select="appv"/></sch:report>
+											</sch:rule>
+										</sch:pattern>
+									</xs:appinfo>
+								</xs:annotation>
+							</xs:element>
 						</xs:sequence>
 					</xs:complexType>
 				</xs:element>

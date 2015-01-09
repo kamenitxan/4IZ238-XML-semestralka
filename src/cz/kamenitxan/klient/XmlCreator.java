@@ -23,7 +23,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 public class XmlCreator {
-	private static final String APPVERSION = "1.0";
+	private static final String APPVERSION = "2";
 
 	public static void startCreator(Request request) {
 		sendXML(createXML(request));

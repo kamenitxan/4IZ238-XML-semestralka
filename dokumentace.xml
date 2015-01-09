@@ -18,6 +18,7 @@
         <title>Návod k použití</title>
         <chapter>
             <title>Popis aplikace</title>
+            <para>Aplikace je vytvořena pro potřeby Reynholm Industries.</para>
             <para>Uživatel má k dispozici GUI aplikaci. Pokud má problém s počítačem, může jí využít k
             zavolání IT pracovníka. Stačí jen vyplnit tabulku a kliknout na tlačítko Odeslat požadavek.
             Požadavek je odeslán na server, kde je zpracován.</para>
@@ -34,15 +35,44 @@
                 Je to udělané tak, že po každém přijatém požadavku se vygeneruje html soubor, aby bylo dobře vidět,
                 že to funguje.             
             </para>
-            <sect1>
+            <section>
                 <title>Seznam tříd</title>
                 <itemizedlist>
                     <listitem><para>ServerReciever - přijímá XML</para></listitem>
                     <listitem><para>XmlProcesor - validuje XML</para></listitem>
                     <listitem><para>Generator - vytváří HTML</para></listitem>
                 </itemizedlist>
-            </sect1>
-          
+            </section>
+            <section>
+                <title>Popis XML</title>
+                <itemizedlist>
+                    <listitem><para>pozadavek - zabalující element</para></listitem>
+                    <listitem><para>-person - element zabalující informace o uživateli</para></listitem>
+                    <listitem><para>--name - jméno uživatele</para></listitem>
+                    <listitem><para>--department - firemní oddělení uživatele</para></listitem>
+                    <listitem><para>--place - místo kde uživatel je</para></listitem>
+                    <listitem><para>--phone - telefoní číslo uživatele</para></listitem>
+                    <listitem><para>-problem - element zabalující informace o problému</para></listitem>
+                    <listitem><para>--createTime - čas vytvoření požadavku</para></listitem>
+                    <listitem><para>--type - typ problému</para></listitem>
+                    <listitem><para>--restart - zda byl počítač restartován</para></listitem>
+                    <listitem><para>--priority - priorita problému</para></listitem>
+                    <listitem><para>--desc - popis problému</para></listitem>
+                    <listitem><para>-pc - element obalující informace o počítači uživatele</para></listitem>
+                    <listitem><para>--os - operační systém</para></listitem>
+                    <listitem><para>--osVersion - verze operačního systému</para></listitem>
+                    <listitem><para>--totalRam - množství RAM v pc</para></listitem>
+                    <listitem><para>--freeRam - volná RAM v pc</para></listitem>
+                    <listitem><para>--cpu - jméno procesoru</para></listitem>
+                    <listitem><para>--appv - verze aplikace odesílající požadavek</para></listitem>
+                    <listitem><para>-action - element obalující informace o provedené akci</para></listitem>
+                    <listitem><para>--actionTime - čas vyřízení požadavku</para></listitem>
+                    <listitem><para>--itWorker - jméno pracovníka, který problém vyřešil</para></listitem>
+                    <listitem><para>--resolved - true pokud je problém vyřešen</para></listitem>
+                    <listitem><para>--problemSource - zdroj problému. Většinou uživatel</para></listitem>
+                    <listitem><para>--fixes - provedené akce pro odstranění problému</para></listitem>
+                </itemizedlist>
+            </section>
         </chapter>
     </part>
 </book>
